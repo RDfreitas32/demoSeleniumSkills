@@ -36,7 +36,7 @@ public class Main {
                 USA""");
 
         driver.findElement(By.cssSelector("input[ng-model='EmailAdress']")).sendKeys("hankstom@gmail.com");
-        driver.findElement(By.cssSelector("input[ng-model='Phone']")).sendKeys("+1(555)123-4567");
+        driver.findElement(By.cssSelector("input[ng-model='Phone']")).sendKeys("4085551234");
 
         driver.findElement(By.cssSelector("input[ng-model='radiovalue'")).click();
 
@@ -45,6 +45,7 @@ public class Main {
         driver.findElement((By.id("checkbox2"))).click();
 
         driver.findElement((By.xpath("/html/body/section/div/div/div[2]/form/div[7]/div/multi-select/div[1]"))).click();
+        Thread.sleep(1000);
         driver.findElement((By.xpath("/html/body/section/div/div/div[2]/form/div[7]/div/multi-select/div[2]/ul/li[8]/a"))).click();
 
         //choosing Java Skill
@@ -52,17 +53,25 @@ public class Main {
         Select selectSkill = new Select(selectElementSkill);
         selectSkill.selectByVisibleText("Java");
 
+        //driver.findElement(By.cssSelector(""));
+
         /*WebElement selectElementCounty = driver.findElement(By.cssSelector("select[ng-model='country'"));
         Select selectCountry = new Select(selectElementCounty);
         selectCountry.selectByVisibleText("Select Country");*/
 
-        WebElement selectElementCountry2 = driver.findElement(By.id("select2-country-container"));
-        Select selectCountry2 = new Select(selectElementCountry2);
-        selectCountry2.selectByVisibleText("United States of America");
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+        driver.findElement(By.cssSelector("span.select2-selection.select2-selection--single")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/span/span/span[1]/input"))).sendKeys("United States of America");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/span/span/span[2]/ul/li"))).click();
+
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         WebElement selectElementYear = driver.findElement(By.cssSelector("select[ng-model='yearbox']"));
         Select selectYear = new Select((selectElementYear));
         selectYear.selectByVisibleText("1980");
+
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
         WebElement selectElementMonth = driver.findElement(By.cssSelector("select[ng-model='monthbox']"));
         Select selectMonth = new Select((selectElementMonth));
